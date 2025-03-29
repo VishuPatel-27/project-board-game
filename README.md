@@ -1,53 +1,130 @@
-# BoardgameListingWebApp
+# 🎲 BoardgameListingWebApp - A Full-Stack DevOps Project
 
-## Description
+## 📌 Project Overview
+BoardgameListingWebApp is a full-stack web application designed to showcase board games and their reviews. The application follows authentication and authorization best practices, and it has been deployed using a complete DevOps pipeline with Jenkins, Kubernetes, and AWS.
 
-**Board Game Database Full-Stack Web Application.**
-This web application displays lists of board games and their reviews. While anyone can view the board game lists and reviews, they are required to log in to add/ edit the board games and their reviews. The 'users' have the authority to add board games to the list and add reviews, and the 'managers' have the authority to edit/ delete the reviews on top of the authorities of users.  
+I've also written a comprehensive [blog](https://imv27-blogs.hashnode.dev/how-to-build-a-cicd-pipeline-for-java-spring-boot-with-jenkins-kubernetes-and-aws-ec2) about this project.
 
-## Technologies
+## 🚀 Tech Stack
+### 🖥️ Application Technologies
+- **Backend:** Java, Spring Boot, Spring MVC, JDBC
+- **Frontend:** Thymeleaf, HTML5, CSS, JavaScript, Bootstrap
+- **Database:** H2 (In-memory)
+- **Security:** Spring Security (Role-Based Authentication & Authorization)
+- **Testing:** JUnit
+- **Build & Dependency Management:** Maven
 
-- Java
-- Spring Boot
-- Amazon Web Services(AWS) EC2
-- Thymeleaf
-- Thymeleaf Fragments
-- HTML5
-- CSS
-- JavaScript
-- Spring MVC
-- JDBC
-- H2 Database Engine (In-memory)
-- JUnit test framework
-- Spring Security
-- Twitter Bootstrap
-- Maven
+### 🛠 DevOps Technologies
+- **CI/CD:** Jenkins
+- **Code Quality & Security:** SonarQube, Trivy
+- **Containerization & Orchestration:** Docker, Kubernetes (kubeadm)
+- **Artifact Repository:** Nexus
+- **Infrastructure:** AWS EC2 (Jenkins, SonarQube, Nexus, Kubernetes cluster)
+- **Monitoring:** Prometheus, Grafana
+- **RBAC & Security:** Kubernetes RBAC, Kubeaudit
 
-## Features
+---
 
-- Full-Stack Application
-- UI components created with Thymeleaf and styled with Twitter Bootstrap
-- Authentication and authorization using Spring Security
-  - Authentication by allowing the users to authenticate with a username and password
-  - Authorization by granting different permissions based on the roles (non-members, users, and managers)
-- Different roles (non-members, users, and managers) with varying levels of permissions
-  - Non-members only can see the boardgame lists and reviews
-  - Users can add board games and write reviews
-  - Managers can edit and delete the reviews
-- Deployed the application on AWS EC2
-- JUnit test framework for unit testing
-- Spring MVC best practices to segregate views, controllers, and database packages
-- JDBC for database connectivity and interaction
-- CRUD (Create, Read, Update, Delete) operations for managing data in the database
-- Schema.sql file to customize the schema and input initial data
-- Thymeleaf Fragments to reduce redundancy of repeating HTML elements (head, footer, navigation)
+## 🎯 Features
+### 🖥️ Application Features
+- 🏆 **Full-Stack Web App** with CRUD functionalities
+- 🔒 **Role-Based Authentication & Authorization** (Users & Managers)
+- 🎲 **Game & Review Management** (Users can add, managers can edit/delete)
+- 📦 **Deployed on AWS EC2** for real-world testing
+- 🧪 **JUnit Tests** for unit testing
 
-## How to Run
+### ⚙️ DevOps Features
+- ✅ **CI/CD Pipeline:** Automated build, test, security scan, and deployment
+- 🔍 **Code Analysis:** Integrated with SonarQube for code quality checks
+- 🔐 **Security Scanning:** Trivy for container vulnerabilities, Kubeaudit for cluster security
+- 🏗️ **Kubernetes Deployment:** Cluster set up using `kubeadm` following best practices
+- 📈 **Monitoring & Logging:** Prometheus & Grafana dashboards for system and application metrics
 
-1. Clone the repository
-2. Open the project in your IDE of choice
-3. Run the application
-4. To use initial user data, use the following credentials.
-  - username: bugs    |     password: bunny (user role)
-  - username: daffy   |     password: duck  (manager role)
-5. You can also sign-up as a new user and customize your role to play with the application! 😊
+---
+
+## 🏗️ Project Architecture
+```
++---------------------------------------+
+|           GitHub Repository           |
++---------------------------------------+
+              |  (Webhook)  
+              v  
++---------------------------------------+
+|               Jenkins                 |
+|  CI/CD Pipeline (Build, Test, Deploy) |
++---------------------------------------+
+              |
+              v
++---------------------------------------+
+|               Docker Hub              |
+|  Container Registry for App Images    |
++---------------------------------------+
+              |
+              v
++---------------------------------------+
+|        Kubernetes Cluster (AWS)       |
+|  Deployed using kubeadm on EC2        |
++---------------------------------------+
+```
+
+---
+
+## 🔧 How to Run Locally
+```bash
+# Clone the repository
+git clone <repo-url>
+cd BoardgameListingWebApp
+
+# Build & Run the application
+mvn clean package
+java -jar target/*.jar
+```
+
+### 🎮 Default Credentials
+- **User:** `bugs` | **Password:** `bunny`
+- **Manager:** `daffy` | **Password:** `duck`
+
+---
+
+## 🚀 CI/CD Pipeline Flow
+1️⃣ **Code Commit** → Trigger Jenkins pipeline via webhook  
+2️⃣ **Build & Test** → Maven build & JUnit tests  
+3️⃣ **Static Analysis** → SonarQube code quality check  
+4️⃣ **Security Scan** → Trivy scan for vulnerabilities  
+5️⃣ **Docker Image Build & Push** → Nexus artifact storage  
+6️⃣ **Deployment on Kubernetes** → Using Helm charts  
+7️⃣ **Monitoring Setup** → Prometheus & Grafana dashboards  
+
+---
+
+## 🔍 Challenges & Lessons Learned
+- **Kubeadm Setup Issues:** Resolved networking conflicts and ensured best practices for cluster security.
+- **RBAC Misconfigurations:** Fixed role bindings for Jenkins to access Kubernetes securely.
+- **Pipeline Failures:** Debugged issues related to missing dependencies and container image pushes.
+- **Monitoring Optimization:** Configured Prometheus exporters for better observability.
+
+---
+
+## 📢 Credits & References
+This project implementation was inspired by [Aditya](https://www.youtube.com/@DevOpsShack) from **DevOps Shack**. Watch the original tutorial here: [DevOps Shack YouTube Video](https://youtu.be/NnkUGzaqqOc?si=0CAMZW0DG0mlQQWP)
+
+---
+
+## 📌 Future Enhancements
+- ✅ Automate infrastructure provisioning using Terraform.
+- ✅ Implement logging with ELK Stack (Elasticsearch, Logstash, Kibana).
+- ✅ Use ArgoCD for GitOps-driven deployments.
+
+---
+
+## 🤝 Contributing
+Pull requests are welcome! Feel free to raise issues for feature requests or bugs.
+
+---
+
+## 📬 Contact
+📧 Email: [Email Me](vishupatel575@gmail.com)
+🔗 LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/vishu-patel/)  
+🐙 GitHub: [GitHub Profile](https://github.com/VishuPatel-27)  
+
+🔥 **Give this repo a ⭐ if you found it useful!**
