@@ -23,7 +23,9 @@ I've also written a comprehensive [blog](https://imv27-blogs.hashnode.dev/how-to
 - **Monitoring:** Prometheus, Grafana
 - **RBAC & Security:** Kubernetes RBAC, Kubeaudit
 
----
+## CI/CD Pipeline Workflow
+![CI/CD Pipeline Workflow](<flow-of-pipeline.png>)
+
 
 ## Features
 ### Application Features
